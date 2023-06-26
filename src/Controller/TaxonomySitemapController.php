@@ -47,10 +47,11 @@ class TaxonomySitemapController extends ControllerBase {
       throw new \Exception('Unable to load taxonomy_sitemap.vocabulary_config configuration.');
     }
     $data = $config->get();
-    $vids = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
-    $vocabularies = \Drupal::entityTypeManager()
-    ->getStorage('taxonomy_vocabulary')
-    ->loadMultiple($vids);
+    $vocabularies = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
+    
+    // $vocabularies = \Drupal::entityTypeManager()
+    // ->getStorage('taxonomy_vocabulary')
+    // ->loadMultiple($vids);
 
     $pager_limit = $data['pager_limit'];
     $translated_terms = [];
@@ -58,12 +59,12 @@ class TaxonomySitemapController extends ControllerBase {
     $vidFilter = $request->query->get('vid'); // Get the 'vid' parameter from the URL query
 
     foreach ($vocabularies as $vocabulary) {
-      if ($vidFilter && $vidFilter !== $vocabulary->id()) {
+      if ($vidFilter && $vidFilter !== $vocabulary) {
         continue; // Skip this vocabulary if it doesn't match the filter
       }
 
-      if ($data[$vocabulary->id()] === 1) {
-        $vocabularies[$vocabulary->id()] = $vocabulary->id();
+      if ($data[$vocabulary] === 1) {
+        $vocabularies[$vocabulary] = $vocabulary;
       }
     }
 

@@ -21,9 +21,11 @@ class SitemapIndexController extends ControllerBase {
 
     $host = \Drupal::request()->getSchemeAndHttpHost();
 
+    $types = [];
+    
     foreach($vocabularies as $vocabulary) {
         if($data[$vocabulary->id()] === 1) {
-            $types[$vocabulary->id()] = $vocabulary->id();
+            $types[] = $vocabulary->id();
         }
         
     }
@@ -67,9 +69,10 @@ class SitemapIndexController extends ControllerBase {
     $vids = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
     $vocabularies = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple($vids);
 
+    $types = [];
     foreach($vocabularies as $vocabulary) { 
       if($data[$vocabulary->id()] === 1) {
-          $types[$vocabulary->id()] = $vocabulary->id();
+          $types[] = $vocabulary->id();
       }
     }
 

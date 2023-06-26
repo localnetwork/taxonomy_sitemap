@@ -73,7 +73,7 @@ class TaxonomySitemapController extends ControllerBase {
       ->sort('changed', 'DESC')
       ->pager($pager_limit);
     $tids = $query->execute();
-    $terms = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($tids);
+    $terms = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadMultiple($tids);
 
     foreach ($terms as $term) {
       $translations = $term->getTranslationLanguages();

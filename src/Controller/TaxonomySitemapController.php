@@ -43,7 +43,7 @@ class TaxonomySitemapController extends ControllerBase {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     $vid = $request->query->get('vid');
-    if (isset($vid)) {
+    if ($vid) {
       // Filter terms by vocabulary ID 'tags'.
       $vocabularies = $vid;
     } else {

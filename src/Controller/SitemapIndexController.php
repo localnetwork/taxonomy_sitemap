@@ -17,7 +17,9 @@ class SitemapIndexController extends ControllerBase {
     $pager_limit = $data['pager_limit'];
 
     $vids = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
-    $vocabularies = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple($vids);
+    $vocabularies = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadMultiple($vids);
 
     $host = \Drupal::request()->getSchemeAndHttpHost();
 
@@ -65,7 +67,9 @@ class SitemapIndexController extends ControllerBase {
     $data = $config->get();
 
     $vids = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
-    $vocabularies = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple($vids);
+    $vocabularies = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadMultiple($vids);
 
     foreach($vocabularies as $vocabulary) { 
       if($data[$vocabulary->id()] === 1) {

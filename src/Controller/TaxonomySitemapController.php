@@ -87,7 +87,6 @@ class TaxonomySitemapController extends ControllerBase {
         ];
       }
     }
-    dpm($translated_terms); 
 
     $build = [
       '#theme' => 'sitemap_xml',

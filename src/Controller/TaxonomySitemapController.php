@@ -42,31 +42,23 @@ class TaxonomySitemapController extends ControllerBase {
   public function sitemapXml(Request $request) {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
+    $vid = $request->query->get('vid');
+    if (isset($vid)) {
+      // Filter terms by vocabulary ID 'tags'.
+      $vocabularies = $vid;
+    } else {
+      // Load all vocabularies.
+      $vocabularies = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
+    }
+
     $config = $this->configFactory->get('taxonomy_sitemap.vocabulary_config');
     if ($config === NULL) {
       throw new \Exception('Unable to load taxonomy_sitemap.vocabulary_config configuration.');
     }
     $data = $config->get();
-    $vocabularies = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
-    
-    // $vocabularies = \Drupal::entityTypeManager()
-    // ->getStorage('taxonomy_vocabulary')
-    // ->loadMultiple($vids);
 
     $pager_limit = $data['pager_limit'];
     $translated_terms = [];
-
-    $vidFilter = $request->query->get('vid'); // Get the 'vid' parameter from the URL query
-
-    foreach ($vocabularies as $vocabulary) {
-      if ($vidFilter && $vidFilter !== $vocabulary) {
-        continue; // Skip this vocabulary if it doesn't match the filter
-      }
-
-      if ($data[$vocabulary] === 1) {
-        $vocabularies[$vocabulary] = $vocabulary;
-      }
-    }
 
     $query = \Drupal::entityQuery('taxonomy_term')
       ->condition('vid', $vocabularies, 'IN')
@@ -88,6 +80,7 @@ class TaxonomySitemapController extends ControllerBase {
         ];
       }
     }
+
     $build = [
       '#theme' => 'sitemap_xml',
       '#terms' => $translated_terms,
@@ -95,6 +88,6 @@ class TaxonomySitemapController extends ControllerBase {
 
     $response = new Response(render($build));
     $response->headers->set('Content-Type', 'application/xml');
-    return $response;
-  }
+    return $response; 
+  } 
 }

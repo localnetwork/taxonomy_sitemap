@@ -48,8 +48,9 @@ class TaxonomySitemapController extends ControllerBase {
     }
     $data = $config->get();
     $vids = \Drupal::entityTypeManager()->getStorage('taxonomy_vocabulary')->getQuery()->execute();
-    $vocabularies = \Drupal\taxonomy\Entity\Vocabulary::loadMultiple($vids);
-
+    $vocabularies = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadMultiple($vids);
 
     $pager_limit = $data['pager_limit'];
     $translated_terms = [];

@@ -1,0 +1,6 @@
+services:
+  taxonomy_sitemap.config:
+    class: Drupal\taxonomy_sitemap\TaxonomySitemapVocabularyConfigForm
+    arguments: ['@config.factory']
+    tags:
+      - { name: config.factory_override }

@@ -1,0 +1,9 @@
+name: Taxonomy Sitemap
+description: Generates sitemap for taxonomy terms.
+package: Sitemap
+
+type: module
+configure: taxonomy_sitemap.vocabulary_config
+dependencies:
+  - taxonomy
+core_version_requirement: ^8 || ^9 || ^10

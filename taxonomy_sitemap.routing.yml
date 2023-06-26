@@ -1,0 +1,23 @@
+taxonomy_sitemap.sitemap_index_xml:
+  path: '/taxonomy/sitemap-index.xml'
+  defaults:
+    _controller: '\Drupal\taxonomy_sitemap\Controller\SitemapIndexController::sitemapIndexXml'
+    _title: 'Sitemap Index'
+  requirements:
+    _permission: 'access content'
+
+taxonomy_sitemap.sitemap_xml:
+  path: '/taxonomy/sitemaps.xml'
+  defaults:
+    _controller: '\Drupal\taxonomy_sitemap\Controller\TaxonomySitemapController::sitemapXml'
+    _title: 'Sitemap'
+  requirements:
+    _permission: 'access content'
+
+taxonomy_sitemap.vocabulary_config:
+  path: '/admin/config/taxonomy_sitemap/vocabulary-config'
+  defaults:
+    _form: '\Drupal\taxonomy_sitemap\Form\TaxonomySitemapVocabularyConfigForm'
+    _title: 'XML Sitemap Config for terms.'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,52 @@
+<?php
+
+function taxonomy_sitemap_theme($existing, $type, $theme, $path) {
+  return [
+    'sitemap_xml' => [
+      'variables' => [
+        'terms' => [],
+        'terms' => [],
+        'data' => [],
+        'test' => [],
+      ],
+    ],
+    
+    'sitemap_index' => [
+      'variables' => [
+        'terms' => [],
+        'terms' => [],
+        'data' => [],
+        'test' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_menu().
+ */
+function taxonomy_sitemap_menu() {
+  $items = [];
+  
+  $items['admin/config/mymodule'] = [
+    'title' => 'MyModule Configuration',
+    'description' => 'Configure MyModule',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['mymodule_config_form'],
+    'access arguments' => ['administer site configuration'],
+    'type' => MENU_NORMAL_ITEM,
+  ];
+  
+  return $items;
+}
+
+/**
+ * Form callback for the MyModule Configuration form.
+ */
+function taxonomy_sitemap_config_form() {
+  $form = [];
+  
+  // Add your configuration form fields here.
+  
+  return $form;
+}

@@ -66,7 +66,6 @@ class TaxonomySitemapVocabularyConfigForm extends ConfigFormBase {
         '#default_value' => $data['priority_'.$vocabulary->id()] ? $data['priority_'.$vocabulary->id()] : 0.5,
       ];
     }
-
     return parent::buildForm($form, $form_state);
   }
 

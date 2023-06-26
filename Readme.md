@@ -1,7 +1,7 @@
 # Drupal Taxonomy Sitemap 
 
 ## About the module
-Generates sitemap for nodes.
+Generates sitemap for taxonomy terms.
 
 ## How to use
 1. Download the file and upload it to /modules folder

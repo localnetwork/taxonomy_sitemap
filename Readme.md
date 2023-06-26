@@ -24,5 +24,5 @@ The Drupal Taxonomy Sitemap module is designed to generate sitemaps specifically
 ## CONS of this module
 1. Compared to other popular modules like xmlsitemap and simple_sitemap, the user-friendliness of this module is limited due to its utilization of plain XML files.
 
-# NEW
-- Added a filter per vocabulary in sitemap. 
+# Recent Updates
+- Added a new feature to enable filtering per vocabulary in the sitemap, allowing more refined control over which taxonomy terms are included.

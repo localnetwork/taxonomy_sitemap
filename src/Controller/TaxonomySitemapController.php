@@ -39,7 +39,7 @@ class TaxonomySitemapController extends ControllerBase {
     );
   }
 
-  public function sitemapXml(Request $request) {
+  public function TaxonomySitemapXml(Request $request) {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     $vid = $request->query->get('vid');
@@ -82,7 +82,7 @@ class TaxonomySitemapController extends ControllerBase {
     }
 
     $build = [
-      '#theme' => 'sitemap_xml',
+      '#theme' => 'taxonomy_sitemap_xml',
       '#terms' => $translated_terms,
     ];
 

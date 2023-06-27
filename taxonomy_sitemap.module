@@ -2,7 +2,7 @@
 
 function taxonomy_sitemap_theme($existing, $type, $theme, $path) {
   return [
-    'sitemap_xml' => [
+    'taxonomy_sitemap_xml' => [
       'variables' => [
         'terms' => [],
         'terms' => [],
@@ -11,7 +11,7 @@ function taxonomy_sitemap_theme($existing, $type, $theme, $path) {
       ],
     ],
     
-    'sitemap_index' => [
+    'taxonomy_sitemap_index' => [
       'variables' => [
         'terms' => [],
         'terms' => [],

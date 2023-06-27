@@ -1,15 +1,15 @@
-taxonomy_sitemap.sitemap_index_xml:
+taxonomy_sitemap.taxonomy_sitemap_index_xml:
   path: '/taxonomy/sitemap-index.xml'
   defaults:
-    _controller: '\Drupal\taxonomy_sitemap\Controller\SitemapIndexController::sitemapIndexXml'
+    _controller: '\Drupal\taxonomy_sitemap\Controller\TaxonomySitemapIndexController::TaxonomySitemapIndexXml'
     _title: 'Sitemap Index'
   requirements:
     _permission: 'access content'
 
-taxonomy_sitemap.sitemap_xml:
+taxonomy_sitemap.taxonomy_sitemap_xml:
   path: '/taxonomy/sitemaps.xml'
   defaults:
-    _controller: '\Drupal\taxonomy_sitemap\Controller\TaxonomySitemapController::sitemapXml'
+    _controller: '\Drupal\taxonomy_sitemap\Controller\TaxonomySitemapController::TaxonomySitemapXml'
     _title: 'Sitemap'
   requirements:
     _permission: 'access content'

@@ -8,7 +8,7 @@ use Drupal\Core\Url;
 
 class TaxonomySitemapIndexController extends ControllerBase {
 
-  public function sitemapIndexXml() {
+  public function TaxonomySitemapIndexXml() {
     $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
 
     $config = \Drupal::config('taxonomy_sitemap.vocabulary_config');
@@ -36,7 +36,7 @@ class TaxonomySitemapIndexController extends ControllerBase {
 
     // Generate URLs for each page of the sitemap index.
     for ($page = 0; $page < $totalPages; $page++) {
-      $url = Url::fromRoute('taxonomy_sitemap.sitemap_xml', ['page' => $page], ['absolute' => TRUE]);
+      $url = Url::fromRoute('taxonomy_sitemap.taxonomy_sitemap_xml', ['page' => $page], ['absolute' => TRUE]);
 
 
       $host = \Drupal::request()->getSchemeAndHttpHost();
